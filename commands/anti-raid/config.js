@@ -23,7 +23,7 @@ module.exports = {
 **The Options are listed below:**
 config ${ops.join("\n config ")}
 `)
-.setColor("#FF0000")
+.setColor("#000000")
 .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
     .setAuthor(message.author.tag, message.author.displayAvatarURL())
 	.setColor(0x000000)
@@ -69,27 +69,40 @@ let show = new Discord.MessageEmbed()
 return message.channel.send({ embed: show })
 			    break;
 			  case "channelcreatelimit":
+if (message.author.id === message.guild.ownerID) {
 if (!args[1]) return message.channel.send(":x: | **Provide The limit**")
 if (isNaN(args[1])) return message.channel.send(":x: | **The limit has to be a number**")
 if (Number(args[1]) < 1) return message.channel.send(":x: | **The limit cannot be zero or negative number**")
 db.set(`channelcreate_${message.guild.id}`, Number(args[1]))
-return message.channel.send("**The channel Create limit has been set to " + Number(args[1]) + "**")
+return message.channel.send("**The channel Create limit has been set to " + Number(args[1]) + "**") }
+ else {
+      return message.channel.send(":x: | **Only The owner of the Server can use this command**")
+    }
 			    break;
 			  case "channeldeletelimit":
+if (message.author.id === message.guild.ownerID) {
 if (!args[1]) return message.channel.send(":x: | **Provide The limit**")
 if (isNaN(args[1])) return message.channel.send(":x: | **The limit has to be a number**")
 if (Number(args[1]) < 1) return message.channel.send(":x: | **The limit cannot be zero or negative number**")
 db.set(`channeldelete_${message.guild.id}`, Number(args[1]))
-return message.channel.send("**The channel Delete limit has been set to " + Number(args[1]) + "**")
+return message.channel.send("**The channel Delete limit has been set to " + Number(args[1]) + "**") }
+else {
+      return message.channel.send(":x: | **Only The owner of the Server can use this command**")
+    }
 			    break;
 			  case "rolecreatelimit":
+if (message.author.id === message.guild.ownerID) {
 if (!args[1]) return message.channel.send(":x: | **Provide The limit**")
 if (isNaN(args[1])) return message.channel.send(":x: | **The limit has to be a number**")
 if (Number(args[1]) < 1) return message.channel.send(":x: | **The limit cannot be zero or negative number**")
 db.set(`rolecreate_${message.guild.id}`, Number(args[1]))
-return message.channel.send("**The role Create limit has been set to " + Number(args[1]) + "**")
+return message.channel.send("**The role Create limit has been set to " + Number(args[1]) + "**")  }
+else {
+      return message.channel.send(":x: | **Only The owner of the Server can use this command**")
+    }
 			    break;
 			  case "roledeletelimit":
+if (message.author.id === message.guild.ownerID) {
 if (!args[1]) return message.channel.send(":x: | **Provide The limit**")
 if (isNaN(args[1])) return message.channel.send(":x: | **The limit has to be a number**")
 if (Number(args[1]) < 1) return message.channel.send(":x: | **The limit cannot be zero or negative number**")
@@ -97,33 +110,50 @@ db.set(`roledelete_${message.guild.id}`, Number(args[1]))
 return message.channel.send("**The role Delete limit has been set to " + Number(args[1]) + "**")
 			    break;
 			  case "banlimit":
+if (message.author.id === message.guild.ownerID) {
 if (!args[1]) return message.channel.send(":x: | **Provide The limit**")
 if (isNaN(args[1])) return message.channel.send(":x: | **The limit has to be a number**")
 if (Number(args[1]) < 1) return message.channel.send(":x: | **The limit cannot be zero or negative number**")
 db.set(`banlimit_${message.guild.id}`, Number(args[1]))
-return message.channel.send("**The ban limit has been set to " + Number(args[1]) + "**")
+return message.channel.send("**The ban limit has been set to " + Number(args[1]) + "**")  }
+else {
+      return message.channel.send(":x: | **Only The owner of the Server can use this command**")
+    }
 			    break;
 			  case "kicklimit":
+if (message.author.id === message.guild.ownerID) {
 if (!args[1]) return message.channel.send(":x: | **Provide The limit**")
 if (isNaN(args[1])) return message.channel.send(":x: | **The limit has to be a number**")
 if (Number(args[1]) < 1) return message.channel.send(":x: | **The limit cannot be zero or negative number**")
 db.set(`kicklimit_${message.guild.id}`, Number(args[1]))
-return message.channel.send("**The kick limit has been set to " + Number(args[1]) + "**")
+return message.channel.send("**The kick limit has been set to " + Number(args[1]) + "**") }
+else {
+      return message.channel.send(":x: | **Only The owner of the Server can use this command**")
+    }
 			    break;
 			  case "punishment":
+if (message.author.id === message.guild.ownerID) {
 if (!args[1]) return message.channel.send(":x: | **Provide The punishment**")
 if (check(args[1], ["ban", "kick", "demote"]) === false) return message.channel.send(":x: | **The punishment can only be kick, ban or demote**")
 db.set(`punish_${message.guild.id}`, args[1].toLowerCase())
-return message.channel.send("**The punishment has been set to " + args[1] + "**")
+return message.channel.send("**The punishment has been set to " + args[1] + "**")  }
+else {
+      return message.channel.send(":x: | **Only The owner of the Server can use this command**")
+    }
 			    break;
 			  case "logs":
+if (message.author.id === message.guild.ownerID) {
 let channel = message.mentions.channels.first()
 if (!channel) return message.channel.send(":x: | **Mention The channel**")
 if (channel.guild.id !== message.guild.id) return message.channel.send(":x: | **That channel is not from this server**")
 db.set(`logs_${message.guild.id}`, channel.id)
 channel.send("**Anti Raid logs Channel**")
-return message.channel.send("**The logs channel has been set to " + args[1] + "**")
+return message.channel.send("**The logs channel has been set to " + args[1] + "**")  }
+else {
+      return message.channel.send(":x: | **Only The owner of the Server can use this command**")
+    }
 			    break;
 			}
 	}
 };
+
