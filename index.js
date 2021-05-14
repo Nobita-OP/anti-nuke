@@ -1,15 +1,14 @@
 console.clear();
 console.log('[INFO]: Loading...');
 console.log('-------------------------------------');
-//anti raid / anti nuke bot coded by legend >:D
 const { Client, Collection } = require('discord.js');
 const discord = require('discord.js');
 const Discord = require('discord.js');
 const { prefix, token } = require('./config.json');
-//dont touch the credits or i will find you and u will have to commit die >:D
 const client = new Client({
 	disableMentions: 'everyone'
 });
+const red = require("chalk")
 
 client.commands = new Collection();
 client.aliases = new Collection();
@@ -21,14 +20,6 @@ client.aliases = new Collection();
 const db = require("quick.db")
 
 console.log('-------------------------------------');
-console.log(red(`
-██╗     ███████╗ ██████╗ ███████╗███╗   ██╗██████╗
-██║     ██╔════╝██╔════╝ ██╔════╝████╗  ██║██╔══██╗
-██║     █████╗  ██║  ███╗█████╗  ██╔██╗ ██║██║  ██║
-██║     ██╔══╝  ██║   ██║██╔══╝  ██║╚██╗██║██║  ██║
-███████╗███████╗╚██████╔╝███████╗██║ ╚████║██████╔╝
-╚══════╝╚══════╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚═════╝ 
-`));
 console.log('-------------------------------------');
 console.log('-------------------------------------');
 console.log(red(`
