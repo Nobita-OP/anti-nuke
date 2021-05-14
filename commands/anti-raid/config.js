@@ -107,7 +107,10 @@ if (!args[1]) return message.channel.send(":x: | **Provide The limit**")
 if (isNaN(args[1])) return message.channel.send(":x: | **The limit has to be a number**")
 if (Number(args[1]) < 1) return message.channel.send(":x: | **The limit cannot be zero or negative number**")
 db.set(`roledelete_${message.guild.id}`, Number(args[1]))
-return message.channel.send("**The role Delete limit has been set to " + Number(args[1]) + "**")
+return message.channel.send("**The role Delete limit has been set to " + Number(args[1]) + "**")  }
+else {
+      return message.channel.send(":x: | **Only The owner of the Server can use this command**")
+    }
 			    break;
 			  case "banlimit":
 if (message.author.id === message.guild.ownerID) {
